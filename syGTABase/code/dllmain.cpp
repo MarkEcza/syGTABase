@@ -2,19 +2,25 @@
 #include "misc/time.hpp"
 #include <windows.h>
 
+
 static HANDLE mainThreadHandle{};
 static HINSTANCE dllModule{};
 
 namespace sy
 {
-    DWORD __stdcall main_thread(void*)
+    DWORD __stdcall mainThread(void*)
     {
         auto loggerInst = std::make_unique<logger>();
-        g_Logger->logNow(time::getTime(), logClass::GENERAL);
         auto pointersInst = std::make_unique<pointers>();
         auto rendererInst = std::make_unique<renderer>();
         auto hookingInst = std::make_unique<hooking>();
+        auto executeInst = std::make_unique<execute>( std::vector 
+            { std::make_shared<script>(&demoScript) }
+        );
+        auto fiberPoolInst = std::make_unique<fiberPool>(10);
         auto guiInst = std::make_unique<GUI>();
+
+        g_Logger->logNow("Injected", logClass::GENERAL);
 
         while (g_IsRunning)
         {
@@ -26,10 +32,12 @@ namespace sy
         
         g_Logger->logNow("Bye bye", logClass::GENERAL);
 
+        executeInst.reset();
         guiInst.reset();
         hookingInst.reset();
         rendererInst.reset();
         pointersInst.reset();
+        fiberPoolInst.reset();
         loggerInst.reset();
 
         CloseHandle(mainThreadHandle);
@@ -47,7 +55,7 @@ BOOL APIENTRY DllMain(HINSTANCE hModule, DWORD ul_reason_for_call, LPVOID lpRese
         if (hModule)
             DisableThreadLibraryCalls(hModule);
 
-        mainThreadHandle = CreateThread(nullptr, 0, sy::main_thread, nullptr, 0, nullptr);
+        mainThreadHandle = CreateThread(nullptr, 0, sy::mainThread, nullptr, 0, nullptr);
         dllModule = hModule;
     }
 

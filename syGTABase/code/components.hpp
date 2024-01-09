@@ -7,6 +7,8 @@
 #include "rendering/renderer.hpp"
 #include "hooking/hooking.hpp"
 #include "ui/uiDemo.hpp"
+#include "native/execute.hpp"
+#include "native/myScripts/myScripts.hpp"
 
 // I don't know why i made them shared pointers instead of unique.
 
@@ -19,4 +21,6 @@ namespace sy
 	inline std::shared_ptr<renderer> g_Renderer;
 	inline std::shared_ptr<hooking> g_Hooking;
 	inline std::shared_ptr<GUI> g_GUI;
+	inline std::shared_ptr<execute> g_Execute;
+	inline std::shared_ptr<fiberPool> g_FiberPool;
 }

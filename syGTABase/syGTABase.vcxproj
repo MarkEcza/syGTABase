@@ -158,12 +158,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="code\components.hpp" />
+    <ClInclude Include="code\gta\types.hpp" />
+    <ClInclude Include="code\native\crossmap.hpp" />
+    <ClInclude Include="code\native\execute.hpp" />
     <ClInclude Include="code\gta\nativeContext.hpp" />
     <ClInclude Include="code\hooking\detour.hpp" />
     <ClInclude Include="code\hooking\hooking.hpp" />
     <ClInclude Include="code\logging\logger.hpp" />
     <ClInclude Include="code\misc\file.hpp" />
     <ClInclude Include="code\misc\time.hpp" />
+    <ClInclude Include="code\native\externNatives.hpp" />
+    <ClInclude Include="code\native\myScripts\myScripts.hpp" />
+    <ClInclude Include="code\native\nativeInvoker.hpp" />
     <ClInclude Include="code\pointers\pointers.hpp" />
     <ClInclude Include="code\pointers\scanner\scanner.hpp" />
     <ClInclude Include="code\rendering\renderer.hpp" />
@@ -177,6 +183,9 @@
     <ClCompile Include="code\hooking\hooks\SwapChain.cpp" />
     <ClCompile Include="code\hooking\hooks\wndProc.cpp" />
     <ClCompile Include="code\logging\logger.cpp" />
+    <ClCompile Include="code\native\execute.cpp" />
+    <ClCompile Include="code\native\myScripts\demoScript.cpp" />
+    <ClCompile Include="code\native\nativeInvoker.cpp" />
     <ClCompile Include="code\pointers\pointers.cpp" />
     <ClCompile Include="code\pointers\scanner\scanner.cpp" />
     <ClCompile Include="code\rendering\renderer.cpp" />

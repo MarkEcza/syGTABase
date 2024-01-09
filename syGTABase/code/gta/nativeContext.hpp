@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 #include <utility>
-#include <minwindef.h>
+#include <Windows.h>
 
 // ~BigBaseV2
 

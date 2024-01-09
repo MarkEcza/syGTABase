@@ -2,8 +2,6 @@
 #include "components.hpp"
 #include "pointers/scanner/scanner.hpp"
 
-
-
 namespace sy
 {
 	sy::hooking::hooking()
