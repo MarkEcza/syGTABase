@@ -8,5 +8,7 @@
 
 ![image](https://github.com/MarkEcza/syGTABase/assets/85032105/5bc1acfa-aff2-467a-87c5-b959b859152e)
 
+#### Open key: Insert.
+#### Unload key: Delete.
 
 Yes i am lazy enough to directly include the dependenies. 
