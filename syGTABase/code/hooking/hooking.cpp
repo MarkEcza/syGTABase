@@ -25,5 +25,7 @@ namespace sy
 	{
 		for (const auto& [addr, hook] : g_Detours)
 			hook->disable();
+
+		MH_ApplyQueued();
 	}
 }
