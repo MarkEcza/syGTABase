@@ -1,7 +1,5 @@
 # Simple GTA5 mod menu base coded in semi-modern C++.
-### Uses:
-[ImGui](https://github.com/ocornut/imgui), 
-[MinHook](https://github.com/TsudaKageyu/minhook)
+### Uses: [ImGui](https://github.com/ocornut/imgui), [MinHook](https://github.com/TsudaKageyu/minhook)
 
 ![image](https://github.com/MarkEcza/syGTABase/assets/85032105/3c305e7d-4fcd-4199-ac70-d3e2548fe5f2)
 
