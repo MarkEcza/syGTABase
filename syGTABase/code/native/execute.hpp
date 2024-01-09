@@ -31,7 +31,7 @@ namespace sy
 	{
 	public:
 		explicit fiberPool(std::size_t numFibers);
-		~fiberPool() = default;
+		~fiberPool();
 
 		void queueJob(std::function<void()> func);
 

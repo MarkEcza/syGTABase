@@ -3,8 +3,14 @@
 
 void sy::demoScript()
 {
-	if (g_Renderer->m_IsVisible)
+	while (true)
 	{
-		PAD::DISABLE_ALL_CONTROL_ACTIONS(0);
+		if (g_Renderer->m_IsVisible)
+		{
+			PAD::DISABLE_ALL_CONTROL_ACTIONS(0);
+		}
+
+		script::getCurrent()->wait();
 	}
+
 }

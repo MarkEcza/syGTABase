@@ -39,4 +39,6 @@ namespace sy
 		nativeCallContext m_CallContext;
 		std::unordered_map<rage::scrNativeHash, rage::scrNativeHandler> m_HandlerCache;
 	};
+
+	inline nativeInvoker g_NativeInvoker;
 }

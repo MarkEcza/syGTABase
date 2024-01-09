@@ -7,15 +7,15 @@
 template <typename Ret, typename ...Args>
 FORCEINLINE Ret invoke(rage::scrNativeHash hash, Args&& ...args)
 {
-	static sy::nativeInvoker invoker = sy::nativeInvoker();
+	using namespace sy;
 
-	invoker.beginCall();
-	(invoker.pushArg(std::forward<Args>(args)), ...);
-	invoker.endCall(hash);
+	g_NativeInvoker.beginCall();
+	(g_NativeInvoker.pushArg(std::forward<Args>(args)), ...);
+	g_NativeInvoker.endCall(hash);
 
 	if constexpr (!std::is_same_v<Ret, void>)
 	{
-		return invoker.getReturnValue<Ret>();
+		return g_NativeInvoker.getReturnValue<Ret>();
 	}
 }
 

@@ -71,9 +71,12 @@ void sy::renderer::onPresentTick()
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
 
-	for (const auto& toRender : m_ToRender)
-		if (toRender != nullptr)
-			toRender();
+	if (m_IsVisible)
+	{
+		for (const auto& toRender : m_ToRender)
+			if (toRender != nullptr)
+				toRender();
+	}
 
 	ImGui::Render();
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());

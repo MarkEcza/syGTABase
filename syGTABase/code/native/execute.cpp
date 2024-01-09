@@ -1,4 +1,5 @@
 #include "components.hpp"
+#include "nativeInvoker.hpp"
 
 namespace sy 
 {
@@ -90,6 +91,9 @@ namespace sy
 
 	void execute::tick()
 	{
+		static bool ensureFiber = (ConvertThreadToFiber(nullptr), true);
+		static bool ensureCache = (g_NativeInvoker.cacheHandlers(), true);
+
 		std::lock_guard lock(m_Mutex);
 
 		for (const auto& _script : m_Functions)
@@ -112,6 +116,11 @@ namespace sy
 		}
 
 		g_FiberPool = std::shared_ptr<fiberPool>(this);
+	}
+
+	fiberPool::~fiberPool()
+	{
+
 	}
 
 	void fiberPool::queueJob(std::function<void()> func)
