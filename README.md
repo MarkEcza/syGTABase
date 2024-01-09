@@ -13,3 +13,4 @@
 
 ### TODO:
 #### -Better logger.
+#### -Better readme.
