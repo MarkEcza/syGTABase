@@ -2,8 +2,8 @@
 #include "misc/time.hpp"
 #include <windows.h>
 
-static HANDLE main_thread_handle{};
-static HINSTANCE dll_module{};
+static HANDLE mainThreadHandle{};
+static HINSTANCE dllModule{};
 
 namespace sy
 {
@@ -32,7 +32,10 @@ namespace sy
         pointersInst.reset();
         loggerInst.reset();
 
-        return 0;
+        CloseHandle(mainThreadHandle);
+        FreeLibraryAndExitThread(dllModule, 0);
+
+        return true;
     }
 }
 
@@ -44,8 +47,8 @@ BOOL APIENTRY DllMain(HINSTANCE hModule, DWORD ul_reason_for_call, LPVOID lpRese
         if (hModule)
             DisableThreadLibraryCalls(hModule);
 
-        main_thread_handle = CreateThread(nullptr, 0, sy::main_thread, nullptr, 0, nullptr);
-        dll_module = hModule;
+        mainThreadHandle = CreateThread(nullptr, 0, sy::main_thread, nullptr, 0, nullptr);
+        dllModule = hModule;
     }
 
     return TRUE;
